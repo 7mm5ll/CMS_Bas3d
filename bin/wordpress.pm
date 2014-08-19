@@ -44,6 +44,10 @@ if ($ynver eq "y" or $ynver eq "Y"){
 }
 $expN = 0;
 
+ if ($v =~ /3.9.1 /){ $expN = $expN + 1;
+ print "+-[|] Wordpress 3.9.1 pluggable.php CSRF vulnerability\n";
+ print "+--[-] http://cxsecurity.com/issue/WLB-2014080072\n\n"; 
+ }
 
  if ($v =~ /3.3.1/){ $expN = $expN + 2;
  print "+-[|] Wordpress 3.3.1 - Multiple CSRF Vulnerabilities \n";
