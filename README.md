@@ -57,13 +57,13 @@ Esta ferramenta lhe fornece duas opções, ou um scan com o objetivo de procurar
 String para procurar vulnerabilidades:
 -
 ```
-root:~# perl ./cmsbas3d.pl [website]
+$ perl ./cmsbas3d.pl [website]
 ```
 
 String para verificar a CMS:
 -
 ```
-root:~# perl ./cmsbas3d.pl vcms [website]
+$ perl ./cmsbas3d.pl vcms [website]
 ```
 
 OBS: FERRAMENTA FUNCIONAL APENAS PARA LINUX!!!
