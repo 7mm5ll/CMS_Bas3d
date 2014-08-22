@@ -40,6 +40,12 @@ if ($ynver eq "y" or $ynver eq "Y"){
  $v=<STDIN>; chomp $v;
 }
 
+ if ($v =~ /1.8 Beta 3/){ $expN = $expN + 1;
+ print "+-[|] MyBB 1.8 Beta 3 Cross Site Scripting / SQL Injection\n";
+ print "+--[-] http://cxsecurity.com/issue/WLB-2014080095\n";
+ print "+--[-] http://www.exploit-db.com/exploits/34381/\n\n";
+ }
+
  if ($v =~ /1.6.12/){ $expN = $expN + 3;
  print "+-[|] MyBB 1.6.12 - Admin Panel FPD & Multiple XSS\n";
  print "+--[-] http://www.1337day.com/exploit/21746\n";
