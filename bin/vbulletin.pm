@@ -32,8 +32,7 @@ if($source =~ /400 URL must be absolute/){ print "\n[~] Error 404!\n\n"; exit();
 $expN = 0;
 if (length($source) > 0){ }else{ print "\n[~] Error!\n"; exit(); }
 
-if ($source =~ /<meta name="generator" content="vBulletin (.*)" \/>/){ $v = $1; }
-if ($source =~ /Powered by <a href="http:\/\/www.vbulletin.com" id="vbulletinlink">vBulletin&trade;<\/a> Version (.*) <br \/>/){ $v = $1; 
+if ($source =~ /Powered by <a href="http:\/\/www.vbulletin.com" id="vbulletinlink">vBulletin&trade;<\/a> Version (.*) <br \/>/ or $source =~ /<meta name="generator" content="vBulletin (.*)" \/>/){ $v = $1; 
 }else{ 
 print "Version not found! Want to enter manually?[y/n]: ";
 $ynver=<STDIN>; chomp $ynver;
