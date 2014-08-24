@@ -14,8 +14,6 @@
 #          <|_____|>
 #           __|.|__
 #          |_______|
-use File::Copy;
-use File::Path;
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
 use lib dirname(dirname abs_path $0).'/bin';
@@ -50,37 +48,6 @@ print "\n\nVerification of CMS initiated!\n";
 if($ARGV[1] !~ /^http/){ $ARGV[1]='http://'.$ARGV[1]; }
 &ini2;
 vcms($ARGV[1]);
-}
-
-if ($ARGV[0] eq "update" or $ARGV[0] eq "UPDATE"){
-&banner;
-print "\nUpdate initiated\n--------------------------------------------------------------------------------\n[|] Realizing download starting the repository...\n";
-system("git clone https://github.com/7mm5ll/CMS_Bas3d.git CMS_Bas3d");
-print " [-] Download completed\n[|] Updating files...\n";
-
-$source = "CMS_Bas3d/bin"; $destino = "./bin"; &update($source,$destino); print ""; #P.O.G
-$source = "CMS_Bas3d";  $destino = "./";       &update($source,$destino);
-
-print " [-] Updated files\n[|]Removing unnecessary folder...";
-system("rm -rf CMS_Bas3d");
-print " [-] Folder removed\n[|] CMS Bas3d updated successfully!\n";
-
-exit();
-
-sub update {
-opendir(DIR, $source);# or die "Can't open $source: $!";
-@files = grep {!/^\.+$/} readdir(DIR); close(DIR);
- 
-foreach my $file (@files) {     my $old = "$source/$file"; move($old, $destino);# or die "Move $old -> $destino failed: $!"; }
-
-opendir(DIR, $source);# or die "Can't open $source: $!"; @files = grep {!/^\.+$/} readdir(DIR); close(DIR);
- 
-foreach my $file (@files) {   if($file =~ /\.pm$/i or $file =~ /\.pl$/i){ $file = $_;
-   my $old = "$source/$file";  move($old, $destino);# or die "Move $old -> $destino failed: $!";
-  }
- }
-}
-}
 }
 
 if($ARGV[0] !~ /^http/){ $ARGV[0]='http://'.$ARGV[0]; }
