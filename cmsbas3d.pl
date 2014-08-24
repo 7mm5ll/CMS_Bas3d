@@ -272,8 +272,8 @@ print "\nCMS Bas3d help file~\n-------------------------------------------------
 print "[|]Basic commands:
  |
  +[-] For scan a website, use:
- | |   $ perl $0 [WEBSITE]
- | |    Ex: $ perl $0 http://target.com
+ | |   root:~# perl $0 [WEBSITE]
+ | |    Ex: root:~# perl $0 http://target.com
  | |
  +[-] CMS's supported for scan:
  +--+-----------------+--------------------------°18
@@ -290,8 +290,8 @@ print "[|]Basic commands:
  |
  |
  +[-] Verify the CMS of website, use:
- | |   $ perl $0 vcms [WEBSITE]
- | |    Ex: $ perl $0 vcms http://target.com
+ | |   root:~# perl $0 vcms [WEBSITE]
+ | |    Ex: root:~# perl $0 vcms http://target.com
  | |
  +[-] CMS's supported for scan:
  +--+----------------+----------------+----------°40
@@ -312,7 +312,7 @@ print "[|]Basic commands:
  | [|] Geeklog
  |
  +[-] For update:
- |  $ perl $0 update
+ |  root:~# perl $0 update
  |
  |[|] Please do not change the names of files!
  °
