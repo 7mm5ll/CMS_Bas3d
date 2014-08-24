@@ -14,6 +14,8 @@
 #          <|_____|>
 #           __|.|__
 #          |_______|
+use File::Copy;
+use File::Path;
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
 use lib dirname(dirname abs_path $0).'/bin';
@@ -41,6 +43,37 @@ if($^O =~/Win32/ig) { print "Only for linux!"; exit(); }else{ system("clear"); }
 if(length($ARGV[0])==""){ &banner; &use; exit();}
 
 if ($ARGV[0] eq "help" or $ARGV[0] eq "ajuda"){ &help; }
+
+if ($ARGV[0] eq "update" or $ARGV[0] eq "UPDATE"){
+&banner;
+print "\nUpdate initiated\n--------------------------------------------------------------------------------\n[|] Realizing download starting the repository...\n";
+
+system("git clone https://github.com/7mm5ll/CMS_Bas3d.git CMS_Bas3d");
+$dir = "CMS_Bas3d/bin";
+unless(-d $dir){ print "\n[~] Error downloading files from the repository... Please try again\n"; exit(); }
+print " [-] Download completed\n[|] Updating files...";
+
+system("rm -rf bin"); system("mkdir bin");
+$source = "CMS_Bas3d/bin"; $destino = "./bin"; &update($source,$destino); print ""; #P.O.G
+$source = "CMS_Bas3d";  $destino = "./";       &update($source,$destino);
+
+sub update {
+opendir(DIR, $source);
+
+@files = grep {!/^\.+$/} readdir(DIR); close(DIR);
+ 
+foreach my $file (@files) { my $old = "$source/$file"; move($old, $destino); }
+
+opendir(DIR, $source);
+ 
+foreach my $file (@files) {   
+   my $old = "$source/$file";  move($old, $destino);
+  }
+ }
+print "\n [-] Updated files successfully!\n";
+system("rm -rf CMS_Bas3d");
+exit();
+}
 
 if($ARGV[0] eq "vcms"){
 &banner;
