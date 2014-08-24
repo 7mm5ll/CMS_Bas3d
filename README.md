@@ -52,7 +52,7 @@ O criador desta ferramenta não se responsabiliza pelo mal uso da mesma, sendo a
 Modo de uso:
 -
 
-Esta ferramenta lhe fornece duas opções, ou um scan com o objetivo de procurar vulnerabilidades ( e exploits para a vulnerabilidade encontrada ) ou o scan com o objetivo de identificar qual CMS esta rodando do website.
+Abaixo esta as opções de que você possui:
 
 String para procurar vulnerabilidades:
 -
