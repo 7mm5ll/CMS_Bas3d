@@ -4,6 +4,8 @@ CMS Bas3d
 Desenvolvido por Marck ( [**Twitter**](https://twitter.com/7mm5l) / [**CaveiraTech**](http://caveiratech.com/forum/) )
 
  Script que facilitara o encontro de possíveis vulnerabilidades em várias CMS diferentes e a identificação de qual CMS esta rodando no alvo...
+ 
+ Testado e funcinal com Perl v5.14.2 !
 
  O scan funciona com as seguintes CMS's:
 -
