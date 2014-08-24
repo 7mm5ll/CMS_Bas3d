@@ -66,7 +66,7 @@ String para verificar a CMS:
 $ perl ./cmsbas3d.pl vcms [website]
 ```
 
-String para atualizar pelo reposítorio:
+String para atualizar pelo Repositório:
 -
 ```
 $ perl ./cmsbas3d.pl update
