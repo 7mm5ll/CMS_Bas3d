@@ -66,5 +66,11 @@ String para verificar a CMS:
 $ perl ./cmsbas3d.pl vcms [website]
 ```
 
+Atualizar a ferramenta direto do repositório:
+-
+```
+$ perl ./cmsbas3d.pl update
+```
+
 OBS: FERRAMENTA FUNCIONAL APENAS PARA LINUX!!!
 -
