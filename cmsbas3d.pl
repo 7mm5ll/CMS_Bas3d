@@ -272,8 +272,8 @@ print "\nCMS Bas3d help file~\n-------------------------------------------------
 print "[|]Basic commands:
  |
  +[-] For scan a website, use:
- | |   marck@root:~# perl $0 [WEBSITE]
- | |    Ex: marck@root:~# perl $0 http://target.com
+ | |   $ perl $0 [WEBSITE]
+ | |    Ex: $ perl $0 http://target.com
  | |
  +[-] CMS's supported for scan:
  +--+-----------------+--------------------------°18
@@ -290,8 +290,8 @@ print "[|]Basic commands:
  |
  |
  +[-] Verify the CMS of website, use:
- | |   marck@root:~# perl $0 vcms [WEBSITE]
- | |    Ex: perl $0 vcms http://target.com
+ | |   $ perl $0 vcms [WEBSITE]
+ | |    Ex: $ perl $0 vcms http://target.com
  | |
  +[-] CMS's supported for scan:
  +--+----------------+----------------+----------°40
