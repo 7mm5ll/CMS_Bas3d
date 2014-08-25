@@ -79,7 +79,7 @@ $expN = 0;
  print "+--[-] http://www.exploit-db.com/exploits/4212/\n\n";
  }
  
- if($v =~ /1.5 Beta 1/ or $v =~ /1.5 Beta 2/ $v =~ /1.5 RC1/){
+ if($v =~ /1.5 Beta 1/ or $v =~ /1.5 Beta 2/ or $v =~ /1.5 RC1/){
  print "+-[|] Joomla! 1.5 Beta1/Beta2/RC1 Remote SQL Injection Exploit\n";
  print "+--[-] http://www.exploit-db.com/exploits/4350/\n\n";
  }
