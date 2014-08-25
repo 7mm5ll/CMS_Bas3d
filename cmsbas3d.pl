@@ -3,17 +3,17 @@
 # \____________________________________________________________/
 #                           @7mm5l
 #
-#  Greets: 
-# Rei_Gelado ~~ Beta Tester
-# All members of caveiratech.com/forum/
-#            _____
-#          </  U  \>
-#         </ _ . _ \>
-#        <[|( )~( )|]>
-#         <\.| | |./>
-#          <|_____|>
-#           __|.|__
-#          |_______|
+#                          Greets: 
+#                 Rei_Gelado ~~ Beta Tester
+#              All members of caveiratech.com/forum/
+#                          _____
+#                        </  U  \>
+#                       </ _ . _ \>
+#                      <[|( )~( )|]>
+#                       <\.| | |./>
+#                        <|_____|>
+#                         __|.|__
+#                        |_______|
 use File::Copy;
 use File::Path;
 use File::Basename qw(dirname);
@@ -42,9 +42,9 @@ use bin::postnuke qw(vpn);
 if($^O =~/Win32/ig) { print "Only for linux!"; exit(); }else{ system("clear"); }
 if(length($ARGV[0])==""){ &banner; &use; exit();}
 
-if ($ARGV[0] eq "help" or $ARGV[0] eq "ajuda"){ &help; }
+if (lc($ARGV[0]) eq "help"){ &help; }
 
-if ($ARGV[0] eq "update" or $ARGV[0] eq "UPDATE"){
+if (lc($ARGV[0]) eq "update"){
 &banner;
 print "\nUpdate initiated\n--------------------------------------------------------------------------------\n[|] Realizing download starting the repository...\n";
 
@@ -75,7 +75,7 @@ system("rm -rf CMS_Bas3d");
 exit();
 }
 
-if($ARGV[0] eq "vcms"){
+if(lc($ARGV[0]) eq "vcms"){
 &banner;
 print "\n\nVerification of CMS initiated!\n";
 if($ARGV[1] !~ /^http/){ $ARGV[1]='http://'.$ARGV[1]; }
@@ -86,7 +86,7 @@ vcms($ARGV[1]);
 if($ARGV[0] !~ /^http/){ $ARGV[0]='http://'.$ARGV[0]; }
 
 #if($ARGV[0] !~ /\/$/ ){ $ARGV[0] = $ARGV[0].'/'; }
-if($ARGV[0] eq "help"){ &help; exit();}
+if(lc($ARGV[0]) eq "help"){ &help; exit();}
 
 &banner;
 &ini;
@@ -314,7 +314,7 @@ print "[|]Basic commands:
  +[-] For update:
  |  root:~# perl $0 update
  |
- |[|] Please do not change the names of files!
+ +[|] Please do not change the names of files!
  °
  Developed By Marck =}
   https://twitter.com/7mm5l
