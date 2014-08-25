@@ -50,12 +50,12 @@ $expN = 0;
  print "+--[-] http://www.exploit-db.com/exploits/1698/\n\n";
  }
  
- if($v =~ /1.5.0/){ $expN = $expN + 1;
+ if($v =~ /1.5.0 Beta/){ $expN = $expN + 1;
  print "+-[|] Joomla 1.5.0 Beta (pcltar.php) Remote File Inclusion Vulnerability\n";
  print "+--[-] http://www.exploit-db.com/exploits/3781/\n\n"; 
  }
  
- if ($v =~ /1.5/){ $expN = $expN + 1;
+ if ($v =~ /1.5 RC3/){ $expN = $expN + 1;
  print "+-[|] Joomla 1.5 RC3 com_content index.php view Parameter SQL Injection \n";
  print "+--[-] http://www.exploit-db.com/exploits/30848/\n\n";
  }
@@ -74,17 +74,23 @@ $expN = 0;
  print "+--[-] http://cxsecurity.com/issue/WLB-2013060146\n\n";
  } 
  
- if($v =~ /1.5.(.*)/){$expN = $expN + 6;
+ if($v =~ /1.5 Beta 2/){
+ print "+-[|] Joomla! CMS 1.5 beta 2 (search) Remote Code Execution Vulnerability\n";
+ print "+--[-] http://www.exploit-db.com/exploits/4212/\n\n";
+ }
+ 
+ if($v =~ /1.5 Beta 1/ or $v =~ /1.5 Beta 2/ $v =~ /1.5 RC1/){
+ print "+-[|] Joomla! 1.5 Beta1/Beta2/RC1 Remote SQL Injection Exploit\n";
+ print "+--[-] http://www.exploit-db.com/exploits/4350/\n|\n";
+ }
+ 
+ if($v =~ /1.5.(.*)/){$expN = $expN + 4;
  print "+-[|] Joomla! 1.5.x 404 Error Page Cross Site Scripting Vulnerability\n";
  print "+--[-] http://www.exploit-db.com/exploits/33378/\n|\n";
  print "+-[|] Joomla! 1.5.x Cross Site Scripting and Information Disclosure Vulnerabilities\n";
  print "+--[-] http://www.exploit-db.com/exploits/33061/\n|\n";
- print "+-[|] Joomla! CMS 1.5 beta 2 (search) Remote Code Execution Vulnerability\n";
- print "+--[-] http://www.exploit-db.com/exploits/4212/\n|\n";
  print "+-[|] Joomla 1.5.x (Token) Remote Admin Change Password Vulnerability\n";
- print "+--[-] http://www.exploit-db.com/exploits/6234/\n|\n"; 
- print "+-[|] Joomla! 1.5 Beta1/Beta2/RC1 Remote SQL Injection Exploit\n";
- print "+--[-] http://www.exploit-db.com/exploits/4350/\n|\n";
+ print "+--[-] http://www.exploit-db.com/exploits/6234/\n|\n";
  print "+-[|] Joomla! 1.5.x Multiple Modules 'search' Parameter Cross-Site Scripting Vulnerabilities\n";
  print "+--[-] http://www.exploit-db.com/exploits/34056/\n\n";
  }
