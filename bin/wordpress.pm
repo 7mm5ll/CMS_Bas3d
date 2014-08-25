@@ -291,7 +291,11 @@ $expN = 0;
  print "+--[-] http://www.1337day.com/exploit/22362\n\n";
  }
 
-#VERSÂO WORDPRESS ------------------------------------------------------------------------
+ if ($source =~ /(.*)\/plugins\/Lead-Octopus-Power\/(.*)/){ $expN = $expN + 1;
+ print "+-[|] WordPress Lead Octopus Power SQL Injection\n";
+ print "+--[-] http://cxsecurity.com/issue/WLB-2014070158\n\n";
+ }
+
  if ($source =~ /(.*)\/plugins\/contus-video-gallery\/(.*)/){ $expN = $expN + 1;
  print "+-[|] Wordpress Video Gallery Plugin 2.5 - Multiple Vulnerabilities\n";
  print "+--[-] http://www.exploit-db.com/exploits/34161/\n";
