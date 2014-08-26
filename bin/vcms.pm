@@ -34,6 +34,12 @@ if($source =~ /400 URL must be absolute/){ print "\n[~] Error 404!\n\n"; exit();
 
 if (length($source) > 0){ }else{ print "\n[~] Error!\n"; exit(); }
 
+if ($source =~ /<meta name="generator" content="Plone - (.*)\/>/){
+print "[|] Plone CMS identified!\n";
+&not;
+exit();
+}
+
 if ($source =~ /Powered by <a href="http:\/\/www.adaptcms.com">AdaptCMS (.*)<\/a>/){
 print "[|] Adapt "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
 &yes;
