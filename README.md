@@ -36,7 +36,7 @@ Desenvolvido por Marck ( [**Twitter**](https://twitter.com/7mm5l) / [**CaveiraTe
  -Chevereto  -CMSimple     -CMSimple_XH
  -Concrete   -Cotonti      -Directus
  -DokuWiki   -Dotclear     -Magento
- -Geeklog
+ -Geeklog    -Plone
  ```
  
  Todos as referencias/exploits encontrados pelo script estão disponíveis em:
