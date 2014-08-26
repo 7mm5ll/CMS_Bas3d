@@ -30,10 +30,9 @@ $source = $c->get($ARGV[0])->content;#                                          
 if($source eq ""){ print "Website offline, try again!\n"; exit(); }#                            |
 if($source =~ /400 URL must be absolute/){ print "Error 404!\n\n"; exit(); }#                   |
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
+$expN = 0;
 if (length($source) > 0){ }else{ print "Error!\n"; exit(); }
 
-print "Starting the search for possible vulnerabilities!\n-------------------------------------------------------------------------------\n";
 if ($source =~ /<meta name="generator" content="Joomla!(.*)/){ $v = $1; 
 }else{ 
 print "Version not found! Want to enter manually?[y/n]: ";
@@ -44,7 +43,6 @@ if ($ynver eq "y" or $ynver eq "Y"){
  $v=<STDIN>; chomp $v;
 }
 }
-$expN = 0;
 #VERSÂO JOOMLA ------------------------------------------------------------------------
  if ($v =~ /1.0.7/){ $expN = $expN + 1;
  print "+-[|] Mambo <= 4.5.3 & Joomla <= 1.0.7 - (feed) Denial of Service Exploit\n";
