@@ -294,7 +294,7 @@ print "[|]Basic commands:
  | |    Ex: root:~# perl $0 vcms http://target.com
  | |
  +[-] CMS's supported for scan:
- +--+----------------+----------------+----------°40
+ +--+----------------+----------------+----------°41
  |  |                |                | 
  | [|] Joomla       [|] AdaptCMS     [|] Apache Roller
  | [|] XOOPS        [|] Frog         [|] openCMS
@@ -309,7 +309,7 @@ print "[|]Basic commands:
  | [|] Chevereto    [|] CMSimple     [|] CMSimple_XH
  | [|] Concrete     [|] Cotonti      [|] Directus
  | [|] DokuWiki     [|] Dotclear     [|] Magento
- | [|] Geeklog
+ | [|] Geeklog      [|] Plone
  |
  +[-] For update:
  |  root:~# perl $0 update
