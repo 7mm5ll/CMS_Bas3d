@@ -36,8 +36,8 @@ if ($source =~ /<meta name="generator" content="WordPress (.*)" \/>/){ $v = $1;
 }else{ 
 print "Version not found! Want to enter manually?[y/n]: ";
 $ynver=<STDIN>; chomp $ynver;
-if ($ynver eq "n" or $ynver eq "N"){ print "\n"; }
-if ($ynver eq "y" or $ynver eq "Y"){
+if (lc($ynver) eq "n"){ print "\n"; }
+if (lc($ynver) eq "y"){
  print "Version: ";
  $v=<STDIN>; chomp $v;
 }
