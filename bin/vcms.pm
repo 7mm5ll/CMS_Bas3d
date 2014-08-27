@@ -8,8 +8,8 @@ use LWP::UserAgent;
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 sub vcms {
-sub yes { print " [-] Available to scan? : YES\n"; }
-sub not { print " [-] Available to scan? : NOT\n"; }
+sub yes { print " [-] Available to scan? : Yes\n"; }
+sub not { print " [-] Available to scan? : Not\n"; }
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                
 $NA    = int(rand(12));#                                                      ______           /
 $A[0]  = 'Mozilla/4.0 (compatible; MSIE 5.0; Windows ME) Opera 5.11 [en]';#   \    0\         /
