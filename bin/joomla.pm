@@ -197,6 +197,11 @@ if ($ynver eq "y" or $ynver eq "Y"){
  }
  
  #COMPONENTES --------------------------------------------------------------------------
+ if ($source =~ /(.*)component\/spidervideoplayer(.*)/){  $expN = $expN + 1;
+ print "+-[|] Joomla Spider 2.8.3 SQL Injection\n";
+ print "+--[-] http://cxsecurity.com/issue/WLB-2014080123\n\n";
+ }
+ 
  if ($source =~ /(.*)?option=com_collector(.*)&/){  $expN = $expN + 2;
  print "+-[|] Joomla com_collector Component Arbitrary File Upload Vulnerability\n";
  print "+--[-] http://www.exploit-db.com/exploits/24228/\n|\n";
