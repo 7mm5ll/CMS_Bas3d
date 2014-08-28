@@ -49,7 +49,7 @@ if (lc($ynver) eq "y"){
  print "+--[-] http://www.exploit-db.com/exploits/14823/\n";
  print "+--[-] http://www.1337day.com/exploit/13899\n|\n";
  print "+-[|] Textpattern 4.2.0 Cross Site Scripting\n";
- print "+--[-] http://cxsecurity.com/issue/WLB-2011040034\n|\n";
+ print "+--[-] http://cxsecurity.com/issue/WLB-2011040034\n\n";
  }
  
  if ($v =~ /4.3.0/){ $expN = $expN + 2;
