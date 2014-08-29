@@ -96,7 +96,7 @@ $expN = 0;
  if ($v =~ /2.6.1/){ $expN = $expN + 2;
  print "+-[|] Wordpress 2.6.1 (SQL Column Truncation) Admin Takeover Exploit\n";
  print "+--[-] http://www.exploit-db.com/exploits/6421/\n|\n"; 
- print "+-[|] Wordpress 2.PHPWordPress 3.0 - Multiple SQL Injection Vulnerabilities6.1 SQL Column Truncation Vulnerability\n";
+ print "+-[|] Wordpress 2.6.1 SQL Column Truncation Vulnerability\n";
  print "+--[-] http://www.exploit-db.com/exploits/6397/\n\n";
  }
  
