@@ -34,8 +34,8 @@ if (length($source) > 0){ }else{ print "\n[~] Error!\n"; exit(); }
 
 print "Version not found! Want to enter manually?[y/n]: ";
 $ynver=<STDIN>; chomp $ynver;
-if (lc($ynver eq "n"){ print "\n"; }
- if (lc($ynver eq "y"){
+if (lc($ynver) eq "n"){ print "\n"; }
+ if (lc($ynver) eq "y"){
   print "Version: ";
   $v=<STDIN>; chomp $v;
  }
