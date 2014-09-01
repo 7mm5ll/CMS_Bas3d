@@ -290,6 +290,38 @@ $expN = 0;
  print "+-[|] Wordpress 3.9.1 - CSRF Vulnerability\n";
  print "+--[-] http://www.1337day.com/exploit/22362\n\n";
  }
+ 
+  if ($source =~ /(.*)\/themes\/acento\/(.*)/){
+ print "+-[|] WordPress acento theme Arbitrary File Download Vulnerability\n";
+ print "+--[-] http://www.1337day.com/exploit/22574\n\n";
+ } 
+ 
+ if ($source =~ /(.*)\/themes\/NativeChurch\/(.*)/){
+ print "+-[|] WordPress NativeChurch theme Arbitrary File Download Vulnerability\n";
+ print "+--[-] http://www.1337day.com/exploit/22573\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/themes\/lote27\/(.*)/){
+ print "+-[|] WordPress lote27 theme Arbitrary File Download Vulnerability\n";
+ print "+--[-] http://www.1337day.com/exploit/22572\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/themes\/FR0_theme\/(.*)/){
+ print "+-[|] WordPress FR0_theme theme Arbitrary File Download Vulnerability\n";
+ print "+--[-] http://www.1337day.com/exploit/22571\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/themes\/beach_apollo\/(.*)/ or 
+     $source =~ /(.*)\/themes\/cuckootap\/(.*)/ or 
+     $source =~ /(.*)\/themes\/IncredibleWP\/(.*)/ or 
+     $source =~ /(.*)\/themes\/ultimatum\/(.*)/ or 
+     $source =~ /(.*)\/themes\/medicate\/(.*)/ or 
+     $source =~ /(.*)\/themes\/Centum\/(.*)/ or 
+     $source =~ /(.*)\/themes\/Avada\/(.*)/ or 
+     $source =~ /(.*)\/themes\/striking_r\/(.*)/){
+ print "+-[|] WordPress CuckooTap Theme & eShop Arbitrary File Download\n";
+ print "+--[-] http://www.1337day.com/exploit/22567\n\n";
+ }
 
  if ($source =~ /(.*)\/plugins\/Lead-Octopus-Power\/(.*)/){ $expN = $expN + 1;
  print "+-[|] WordPress Lead Octopus Power SQL Injection\n";
