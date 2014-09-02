@@ -97,12 +97,6 @@ if (lc($ynver) eq "n"){ print "\n"; }
   print "+-[|] AdaptCMS 3.0.1 Cross Site Scripting\n";
   print "+--[-] http://cxsecurity.com/issue/WLB-2013100073\n\n";  
   }
- 
-  if ($v =~ /2.0.2/){ $expN = $expN + 1;
-  print "+-[|] http://cxsecurity.com/issue/WLB-2012060027\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2013100073\n\n";  
-  }
-  
 
  if ($expN==0){ print "\n[~] Exploits not found :'( \n"; exit(); }
 print "-------------------------------------------------------------------------------\nEnd...\nPossible exploits found: ".$expN."\n-------------------------------------------------------------------------------\n";
