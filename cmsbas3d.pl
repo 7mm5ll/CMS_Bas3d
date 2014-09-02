@@ -121,13 +121,13 @@ vjoomla($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="WordPress (.*)" \/>/ or $source =~ /<a href="http:\/\/wordpress.org\/">(.*) WordPress<\/a>/){
-print "[|] Wordpress CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print "[|] WordPress CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 
 vwp($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="WordPress.com">/ or $source =~ /<meta name="generator" content="WordPress.com" \/>/ or $source =~ /(.*)src=(.*)\/wp-content\/uploads\/(.*)/){
-print "[|] Wordpress CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print "[|] WordPress CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vwp($ARGV[0]);
 }
 
