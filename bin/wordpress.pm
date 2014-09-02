@@ -291,6 +291,11 @@ $expN = 0;
  print "+--[-] http://www.1337day.com/exploit/22362\n\n";
  }
  
+ if ($source =~ /(.*)\/plugins\/gallery-images\/(.*)/){
+ print "+-[|] Wordpress Huge-IT Image Gallery 1.0.1 Authenticated SQL Injection\n";
+ print "+--[-] http://www.exploit-db.com/exploits/34524/\n\n";
+ } 
+ 
   if ($source =~ /(.*)\/themes\/acento\/(.*)/){
  print "+-[|] WordPress acento theme Arbitrary File Download Vulnerability\n";
  print "+--[-] http://www.1337day.com/exploit/22574\n\n";
