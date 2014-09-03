@@ -52,7 +52,7 @@ print BOLD WHITE,"\nUpdate initiated\n------------------------------------------
 system("git clone https://github.com/7mm5ll/CMS_Bas3d.git CMS_Bas3d");
 $dir = "CMS_Bas3d/bin";
 unless(-d $dir){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Error downloading files from the repository... Please try again\n"; exit(); }
-print BOLD WHITE, " [", BOLD RED, "-", BOLD WHITE, "] Download completed\n[", BOLD RED, "|", BOLD WHITE, "] Updating files...";
+print BOLD WHITE, " [", BOLD GREEN, "-", BOLD WHITE, "] Download completed\n[", BOLD YELLOW, "|", BOLD WHITE, "] Updating files...";
 
 system("rm -rf bin"); system("mkdir bin");
 $source = "CMS_Bas3d/bin"; $destino = "./bin"; &update($source,$destino); print ""; #P.O.G
