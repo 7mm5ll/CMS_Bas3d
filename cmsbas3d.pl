@@ -16,6 +16,7 @@
 #                        |_______|
 use File::Copy;
 use File::Path;
+use Term::ANSIColor qw(:constants);
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
 use lib dirname(dirname abs_path $0).'/bin';
@@ -39,19 +40,19 @@ use bin::moodle qw(vmd);
 use bin::phpnuke qw(vphn);
 use bin::postnuke qw(vpn);
 
-if($^O =~/Win32/ig) { print "Only for linux!"; exit(); }else{ system("clear"); }
+if($^O =~/Win32/ig) { print BOLD RED,"Only for linux!"; exit(); }else{ system("clear"); }
 if(length($ARGV[0])==""){ &banner; &use; exit();}
 
 if (lc($ARGV[0]) eq "help"){ &help; }
 
 if (lc($ARGV[0]) eq "update"){
-&banner;
-print "\nUpdate initiated\n--------------------------------------------------------------------------------\n[|] Realizing download starting the repository...\n";
+print BOLD GREEN; &banner; print BOLD RESET;
+print BOLD WHITE,"\nUpdate initiated\n--------------------------------------------------------------------------------\n[", BOLD GREEN,"|", BOLD WHITE,"] Realizing download starting the repository...\n";
 
 system("git clone https://github.com/7mm5ll/CMS_Bas3d.git CMS_Bas3d");
 $dir = "CMS_Bas3d/bin";
-unless(-d $dir){ print "\n[~] Error downloading files from the repository... Please try again\n"; exit(); }
-print " [-] Download completed\n[|] Updating files...";
+unless(-d $dir){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Error downloading files from the repository... Please try again\n"; exit(); }
+print BOLD WHITE, " [", BOLD RED, "-", BOLD WHITE, "] Download completed\n[", BOLD RED, "|", BOLD WHITE, "] Updating files...";
 
 system("rm -rf bin"); system("mkdir bin");
 $source = "CMS_Bas3d/bin"; $destino = "./bin"; &update($source,$destino); print ""; #P.O.G
@@ -70,14 +71,14 @@ foreach my $file (@files) {
    my $old = "$source/$file";  move($old, $destino);
   }
  }
-print "\n [-] Updated files successfully!\n";
+print "\n ", BOLD WHITE,"[", BOLD GREEN,"-", BOLD WHITE,"] Updated files ", BOLD GREEN, "successfully!\n"; print BOLD RESET;
 system("rm -rf CMS_Bas3d");
 exit();
 }
 
 if(lc($ARGV[0]) eq "vcms"){
 &banner;
-print "\n\nVerification of CMS initiated!\n";
+print "\n\n", BOLD WHITE,"Verification of CMS initiated!\n";
 if($ARGV[1] !~ /^http/){ $ARGV[1]='http://'.$ARGV[1]; }
 &ini2;
 vcms($ARGV[1]);
@@ -109,173 +110,173 @@ $c->timeout(30);#                                                               
 $c->env_proxy;#                                                                               \
 $source = $c->get($ARGV[0])->content;#                                                         \
 #-----------------------------------------------------------------------------------------------+
-if($source eq ""){ print "\n[~] Website offline, try again!\n"; exit(); }#                      |
-if($source =~ /400 URL must be absolute/){ print "\n[~] Error 404!\n\n"; exit(); }#             |
+if($source eq ""){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Website offline, try again!\n"; exit(); }#                      |
+if($source =~ /400 URL must be absolute/){ print "\n[", BOLD RED,"~", BOLD WHITE,"] ", BOLD RED,"Error 404!", BOLD WHITE,"\n\n"; exit(); }#             |
 #-----------------------------------------------------------------------------------------------+
 
-if (length($source) > 0){}else{ print "\n[~] Error!\n"; exit(); }
+if (length($source) > 0){}else{ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] ", BOLD RED,"Error!\n"; exit(); }
 
 if ($source =~ /<meta name="generator" content="Joomla!(.*)/){
-print "[|] Joomla CMS identified!\n-------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Joomla CMS identified!\n-------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vjoomla($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="WordPress (.*)" \/>/ or $source =~ /<a href="http:\/\/wordpress.org\/">(.*) WordPress<\/a>/){
-print "[|] WordPress CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] WordPress CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 
 vwp($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="WordPress.com">/ or $source =~ /<meta name="generator" content="WordPress.com" \/>/ or $source =~ /(.*)src=(.*)\/wp-content\/uploads\/(.*)/){
-print "[|] WordPress CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] WordPress CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vwp($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="XOOPS" \/>/){
-print "[|] XOOPS CMS identified!\n-------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] XOOPS CMS identified!\n-------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vxp($ARGV[0]);
 }
 
 if ($source =~ /<a href="http:\/\/www.simplemachines.org\/" title="Simple Machines Forum" target="_blank">Powered by SMF (.*)<\/a>/){
-print "[|] SMF CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] SMF CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vsmf($ARGV[0]);
 }
 
 if ($source =~ /(.*)smf_(.*)/ or $source =~ /<a href="http:\/\/www.simplemachines.org\/about\/copyright.php" title="Free Forum Software" target="_blank">SMF (.*)<\/a>/){ 
-print "[|] SMF CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] SMF CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vsmf($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="vBulletin (.*)" \/>/){
-print "[|] vBulletin CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] vBulletin CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vvb($ARGV[0]);
 } 
 
 if ($source =~ /Powered by <a href="http:\/\/www.vbulletin.com" id="vbulletinlink">vBulletin&trade;<\/a> Version (.*) <br \/>/){ 
-print "[|] vBulletin CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] vBulletin CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vvb($ARGV[0]);
 } 
 
 if ($source =~ /powered by vBulletin/){ 
-print "[|] vBulletin CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] vBulletin CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vvb($ARGV[0]);
 }
 
 if ($source =~ /(.*)Powered by <a href="http:\/\/www.phpbb.com\/">phpBB<\/a>(.*)/){
-print "[|] phpBB CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] phpBB CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vbb($ARGV[0]);
 }
 
 if ($source =~ /Powered By <a href="http:\/\/www.mybboard.net" target="_blank">MyBB<\/a>/){
-print "[|] MyBB CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] MyBB CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vbb($ARGV[0]);
 }
 
 if ($source =~ /name="Generator" content="Drupal (.*) (.*)"/){
-print "[|] Drupal CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Drupal CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vdru($ARGV[0]);
 }
 
 if ($source =~ /Drupal.settings/){
-print "[|] Drupal CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Drupal CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vdru($ARGV[0]);
 }
 
 if ($source =~ /<a href="http:\/\/www.modx.com" target="_blank"> Powered by MODx<\/a>/){
-print "[|] MODx CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] MODx CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vmod($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="SilverStripe - http:\/\/silverstripe.org" \/>/){
-print "[|] SilverStripe CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] SilverStripe CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vss($ARGV[0]);
 }
 
 if ($source =~ /Powered by <a href="http:\/\/www.textpattern.com" title="Textpattern">Textpattern<\/a>/){
-print "[|] Textpattern CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Textpattern CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vtp($ARGV[0]);
 }
 
 if ($source =~ /Powered by (.*)Frog/){
-print "[|] Frog CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Frog CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vfrog($ARGV[0]);
 }
 
 if ($source =~ /Powered by <a href="http:\/\/www.adaptcms.com">AdaptCMS (.*)<\/a>/){
-print "[|] Adapt CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Adapt CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vada($ARGV[0],$1);
 }
 
 if ($source =~ /<a href="\/about.php">About ATutor<\/a>/){
-print "[|] ATutor CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] ATutor CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vatu($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="b2evolution (.*)" \/>/){
-print "[|] b2evolution CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] b2evolution CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vb2($ARGV[0]);
 }
 
 if ($source =~ /Powered by <a href="http:\/\/moodle.org" title="Moodle">Moodle<\/a>/ || $source =~ /<meta name="keywords" content="moodle, Course Management System " \/>/ || $ARGV =~ /:\/\/moodle./ || $ARGV =~ /:\/\/www.moodle./){
-print "[|] Moodle CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Moodle CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vmd($ARGV[0]);
 }
 
 if ($source =~ /<META NAME="GENERATOR" CONTENT="PHP-Nuke(.*)">/){
-print "[|] ATutor CMS identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] ATutor CMS identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vphn($ARGV[0]);
 }
 
 if ($source =~ /<meta name="generator" content="PostNuke (.*) - http:\/\/postnuke.com">/){
-print "[|] PostNuke CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\nStarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] PostNuke CMS "; if ($1 > 0){ print "v".$1." "; } print "identified!\n--------------------------------------------------------------------------------\n", BOLD GREEN,"S",BOLD WHITE,"tarting the search for possible exploits!\n-------------------------------------------------------------------------------\n";
 vpn($ARGV[0]);
 }
 
 if ($source =~ /<a href="http:\/\/www.cloudflare.com\/" target="_blank" style="(.*)">DDoS protection by CloudFlare<\/a>/){
-print "[~] CloudFlare detected!\n";
+print BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] CloudFlare detected!\n";
 exit();
 }
 
-print "\n[~] CMS unidentified!\n";
+print "\n",BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] CMS unidentified!\n";
 
 sub ini {
-print "-------------------------------------------------------------------------------
-Target: ".$ARGV[0]."\n";
+print BOLD WHITE,"-------------------------------------------------------------------------------
+Target: ",BOLD YELLOW $ARGV[0]."\n", BOLD WHITE; 
 print "Started in ".localtime();
-print"\n-------------------------------------------------------------------------------\n[|]Loading... \n";
+print BOLD WHITE,"\n-------------------------------------------------------------------------------\n[",BOLD GREEN,"|",BOLD WHITE,"]Loading... \n";
 }
 sub ini2 {
-print "-------------------------------------------------------------------------------
-Target: ".$ARGV[1]."\n";
+print BOLD WHITE,"-------------------------------------------------------------------------------
+Target: ",BOLD YELLOW $ARGV[1]."\n", BOLD WHITE;
 print "Started in ".localtime();
-print"\n-------------------------------------------------------------------------------\n[|]Loading... \n";
+print BOLD WHITE,"\n-------------------------------------------------------------------------------\n[",BOLD GREEN,"|",BOLD WHITE,"]Loading... \n";
 }
 
-sub use { print "        Use: $0  help \n"; }
+sub use { print BOLD YELLOW"        Use: $0  help \n"; }
 
 sub banner {
 $NRB = int(rand(8));
-$banner[0] = "   ******  ****     ****  ********   ******                      ****       **\n  **////**/**/**   **/** **//////   /*////**                    */// *     /**\n **    // /**//** ** /**/**         /*   /**   ******    ******/    /*     /**\n/**       /** //***  /**/*********  /******   //////**  **////    ***   ******\n/**       /**  //*   /**////////**  /*//// **  ******* //*****   /// * **///**\n//**    **/**   /    /**       /**  /*    /** **////**  /////** *   /*/**  /**\n //****** /**        /** ********   /******* //******** ****** / **** //******\n  //////  //         // ////////    ///////   //////// //////   ////   //////\n";
-$banner[1] = " #####  #     #  #####     ######                 #####\n#     # ##   ## #     #    #     #   ##    ####  #     # #####\n#       # # # # #          #     #  #  #  #            # #    #\n#       #  #  #  #####     ######  #    #  ####   #####  #    #\n#       #     #       #    #     # ######      #       # #    #\n#     # #     # #     #    #     # #    # #    # #     # #    #\n #####  #     #  #####     ######  #    #  ####   #####  #####\n";
-$banner[2] = " ######  ##     ##  ######     ########     ###     ######   #######  ########\n##    ## ###   ### ##    ##    ##     ##   ## ##   ##    ## ##     ## ##     ##\n##       #### #### ##          ##     ##  ##   ##  ##              ## ##     ##\n##       ## ### ##  ######     ########  ##     ##  ######   #######  ##     ##\n##       ##     ##       ##    ##     ## #########       ##        ## ##     ##\n##    ## ##     ## ##    ##    ##     ## ##     ## ##    ## ##     ## ##     ##\n ######  ##     ##  ######     ########  ##     ##  ######   #######  ########\n";
-$banner[3] = "  ____              ____        ____                        __       __     \n /\\  _`\\    /'\\_/`\\/\\  _`\\     /\\  _`\\                    /'__`\\    /\\ \\    \n \\ \\ \\/\\_\\ /\\      \\ \\,\\L\\_\\   \\ \\ \\L\\ \\     __      ____/\\_\\L\\ \\   \\_\\ \\   \n  \\ \\ \\/_/_\\ \\ \\__\\ \\/_\\__ \\    \\ \\  _ <'  /'__`\\   /',__\\/_/_\\_<_  /'_` \\  \n   \\ \\ \\L\\ \\\\ \\ \\_/\\ \\/\\ \\L\\ \\   \\ \\ \\L\\ \\/\\ \\L\\.\\_/\\__, `\\/\\ \\L\\ \\/\\ \\L\\ \\ \n    \\ \\____/ \\ \\_\\\\ \\_\\ `\\____\\   \\ \\____/\\ \\__/.\\_\\/\\____/\\ \\____/\\ \\___,_\\\n     \\/___/   \\/_/ \\/_/\\/_____/    \\/___/  \\/__/\\/_/\\/___/  \\/___/  \\/__,_ /\n";
-$banner[4] = "    O))   O))       O))  O)) O)   O)) O))                                  O))\n O))   O))O) O))   O)))O))    O)) O)    O))                  O)) O))       O))\nO))       O)) O)) O O)) O))       O)     O))   O))     O))))    O))        O))\nO))       O))  O))  O))   O))     O))) O)    O))  O)) O))     O))      O)) O))\nO))       O))   O)  O))      O))  O)     O))O))   O))   O)))     O))  O)   O))\n O))   O))O))       O))O))    O)) O)      O)O))   O))     O))      O))O)   O))\n   O))))  O))       O))  O)) O)   O)))) O))   O)) O)))O)) O))O)))))    O)) O))\n";
-$banner[5] = "  _____ ___  ___ _____  ______            _____     _ \n /  __ \\|  \\/  |/  ___| | ___ \\          |____ |   | |\n | /  \\/| .  . |\\ `--.  | |_/ / __ _ ___     / / __| |\n | |    | |\\/| | `--. \\ | ___ \\/ _` / __|    \\ \\/ _` |\n | \\__/\\| |  | |/\\__/ / | |_/ / (_| \\__ \\.___/ / (_| |\n  \\____/\\_|  |_/\\____/  \\____/ \\__,_|___/\\____/ \\__,_|\n";
-$banner[6] = " _________     _____    _________ __________               ________      .___\n \\_   ___ \\   /     \\  /   _____/ \\______   \\_____    _____\\_____  \\   __| _/\n /    \\  \\/  /  \\ /  \\ \\_____  \\   |    |  _/\\__  \\  /  ___/ _(__  <  / __ |\n \\     \\____/    Y    \\/        \\  |    |   \\ / __ \\_\\___ \\ /       \\/ /_/ | \n  \\______  /\\____|__  /_______  /  |______  /(____  /____  >______  /\\____ | \n         \\/         \\/        \\/          \\/      \\/     \\/       \\/      \\/\n"; 
-$banner[7] = "  _____ __  __  _____   ____            ____      _ \n / ____|  \\/  |/ ____| |  _ \\          |___ \\    | |\n| |    | \\  / | (___   | |_) | __ _ ___  __) | __| |\n| |    | |\\/| |\\___ \\  |  _ < / _` / __||__ < / _` |\n| |____| |  | |____) | | |_) | (_| \\__ \\___) | (_| |\n \\_____|_|  |_|_____/  |____/ \\__,_|___/____/ \\__,_|\n";
+$banner[0] = BOLD GREEN,"   ******  ****     ****  ********   ******                      ****       **\n  **////**/**/**   **/** **//////   /*////**                    */// *     /**\n **    // /**//** ** /**/**         /*   /**   ******    ******/    /*     /**\n/**       /** //***  /**/*********  /******   //////**  **////    ***   ******\n/**       /**  //*   /**////////**  /*//// **  ******* //*****   /// * **///**\n//**    **/**   /    /**       /**  /*    /** **////**  /////** *   /*/**  /**\n //****** /**        /** ********   /******* //******** ****** / **** //******\n  //////  //         // ////////    ///////   //////// //////   ////   //////\n";
+$banner[1] = BOLD GREEN," #####  #     #  #####     ######                 #####\n#     # ##   ## #     #    #     #   ##    ####  #     # #####\n#       # # # # #          #     #  #  #  #            # #    #\n#       #  #  #  #####     ######  #    #  ####   #####  #    #\n#       #     #       #    #     # ######      #       # #    #\n#     # #     # #     #    #     # #    # #    # #     # #    #\n #####  #     #  #####     ######  #    #  ####   #####  #####\n";
+$banner[2] = BOLD GREEN," ######  ##     ##  ######     ########     ###     ######   #######  ########\n##    ## ###   ### ##    ##    ##     ##   ## ##   ##    ## ##     ## ##     ##\n##       #### #### ##          ##     ##  ##   ##  ##              ## ##     ##\n##       ## ### ##  ######     ########  ##     ##  ######   #######  ##     ##\n##       ##     ##       ##    ##     ## #########       ##        ## ##     ##\n##    ## ##     ## ##    ##    ##     ## ##     ## ##    ## ##     ## ##     ##\n ######  ##     ##  ######     ########  ##     ##  ######   #######  ########\n";
+$banner[3] = BOLD GREEN,"  ____              ____        ____                        __       __     \n /\\  _`\\    /'\\_/`\\/\\  _`\\     /\\  _`\\                    /'__`\\    /\\ \\    \n \\ \\ \\/\\_\\ /\\      \\ \\,\\L\\_\\   \\ \\ \\L\\ \\     __      ____/\\_\\L\\ \\   \\_\\ \\   \n  \\ \\ \\/_/_\\ \\ \\__\\ \\/_\\__ \\    \\ \\  _ <'  /'__`\\   /',__\\/_/_\\_<_  /'_` \\  \n   \\ \\ \\L\\ \\\\ \\ \\_/\\ \\/\\ \\L\\ \\   \\ \\ \\L\\ \\/\\ \\L\\.\\_/\\__, `\\/\\ \\L\\ \\/\\ \\L\\ \\ \n    \\ \\____/ \\ \\_\\\\ \\_\\ `\\____\\   \\ \\____/\\ \\__/.\\_\\/\\____/\\ \\____/\\ \\___,_\\\n     \\/___/   \\/_/ \\/_/\\/_____/    \\/___/  \\/__/\\/_/\\/___/  \\/___/  \\/__,_ /\n";
+$banner[4] = BOLD GREEN,"    O))   O))       O))  O)) O)   O)) O))                                  O))\n O))   O))O) O))   O)))O))    O)) O)    O))                  O)) O))       O))\nO))       O)) O)) O O)) O))       O)     O))   O))     O))))    O))        O))\nO))       O))  O))  O))   O))     O))) O)    O))  O)) O))     O))      O)) O))\nO))       O))   O)  O))      O))  O)     O))O))   O))   O)))     O))  O)   O))\n O))   O))O))       O))O))    O)) O)      O)O))   O))     O))      O))O)   O))\n   O))))  O))       O))  O)) O)   O)))) O))   O)) O)))O)) O))O)))))    O)) O))\n";
+$banner[5] = BOLD GREEN,"  _____ ___  ___ _____  ______            _____     _ \n /  __ \\|  \\/  |/  ___| | ___ \\          |____ |   | |\n | /  \\/| .  . |\\ `--.  | |_/ / __ _ ___     / / __| |\n | |    | |\\/| | `--. \\ | ___ \\/ _` / __|    \\ \\/ _` |\n | \\__/\\| |  | |/\\__/ / | |_/ / (_| \\__ \\.___/ / (_| |\n  \\____/\\_|  |_/\\____/  \\____/ \\__,_|___/\\____/ \\__,_|\n";
+$banner[6] = BOLD GREEN," _________     _____    _________ __________               ________      .___\n \\_   ___ \\   /     \\  /   _____/ \\______   \\_____    _____\\_____  \\   __| _/\n /    \\  \\/  /  \\ /  \\ \\_____  \\   |    |  _/\\__  \\  /  ___/ _(__  <  / __ |\n \\     \\____/    Y    \\/        \\  |    |   \\ / __ \\_\\___ \\ /       \\/ /_/ | \n  \\______  /\\____|__  /_______  /  |______  /(____  /____  >______  /\\____ | \n         \\/         \\/        \\/          \\/      \\/     \\/       \\/      \\/\n"; 
+$banner[7] = BOLD GREEN,"  _____ __  __  _____   ____            ____      _ \n / ____|  \\/  |/ ____| |  _ \\          |___ \\    | |\n| |    | \\  / | (___   | |_) | __ _ ___  __) | __| |\n| |    | |\\/| |\\___ \\  |  _ < / _` / __||__ < / _` |\n| |____| |  | |____) | | |_) | (_| \\__ \\___) | (_| |\n \\_____|_|  |_|_____/  |____/ \\__,_|___/____/ \\__,_|\n";
 print $banner[$NRB];
 }     
 
 sub help {
 &banner;
-print "\nCMS Bas3d help file~\n-------------------------------------------------------------------------------\n";
-print "[|]Basic commands:
+print BOLD WHITE,"\nCMS Bas3d help file~\n-------------------------------------------------------------------------------\n";
+print BOLD WHITE,"[", BOLD GREEN ,"|", BOLD WHITE ,"]Basic commands:
  |
- +[-] For scan a website, use:
+ +[", BOLD GREEN ,"-", BOLD WHITE ,"] For scan a website, use:
  | |   root:~# perl $0 [WEBSITE]
- | |    Ex: root:~# perl $0 http://target.com
+ | |    Ex: ", BOLD YELLOW ,"root:~# perl $0 http://target.com", BOLD WHITE ,"
  | |
- +[-] CMS's supported for scan:
+ +[", BOLD GREEN ,"-", BOLD WHITE ,"] CMS's supported for scan:
  +--+-----------------+--------------------------°18
  |  |                 |
  | [|] Joomla        [|] AdaptCMS
@@ -289,11 +290,11 @@ print "[|]Basic commands:
  | [|] MODx          [|] SilverStripe
  |
  |
- +[-] Verify the CMS of website, use:
+ +[", BOLD GREEN ,"-", BOLD WHITE ,"] Verify the CMS of website, use:
  | |   root:~# perl $0 vcms [WEBSITE]
- | |    Ex: root:~# perl $0 vcms http://target.com
+ | |    Ex: ", BOLD YELLOW ,"root:~# perl $0 vcms http://target.com", BOLD WHITE ,"
  | |
- +[-] CMS's supported for scan:
+ +[", BOLD GREEN ,"-", BOLD WHITE ,"] CMS's supported for scan:
  +--+----------------+----------------+----------°41
  |  |                |                | 
  | [|] Joomla       [|] AdaptCMS     [|] Apache Roller
@@ -311,16 +312,16 @@ print "[|]Basic commands:
  | [|] DokuWiki     [|] Dotclear     [|] Magento
  | [|] Geeklog      [|] Plone
  |
- +[-] For update:
- |  root:~# perl $0 update
+ +[", BOLD GREEN ,"-", BOLD WHITE ,"] For update:
+ |  Ex: ", BOLD YELLOW ,"root:~# perl $0 update", BOLD WHITE ,"
  |
- +[|] Please do not change the names of files!
+ +[", BOLD RED ,"|", BOLD WHITE ,"] Please ", BOLD RED ,"do not change", BOLD WHITE ," the names of files!
  °
- Developed By Marck =}
-  https://twitter.com/7mm5l
+ Developed By ", BOLD BLUE ,"Marck", BOLD WHITE ," =}
+  ", BOLD BLUE ,"https://twitter.com/7mm5l", BOLD WHITE ,"
  
- Greets: Rei_Gelado
-         All friends of caveiratech.com/forum/
+ Greets: ", BOLD BLUE ,"Rei_Gelado", BOLD WHITE ,"
+         All friends of ", BOLD BLUE ,"caveiratech.com/forum/", BOLD WHITE ,"
 ";
 exit();
 }
