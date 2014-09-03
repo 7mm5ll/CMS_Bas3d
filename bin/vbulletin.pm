@@ -301,6 +301,11 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 4.0.x (Search) SQLi / Cross-Site Request Scripting\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/16160\n\n";
  }
+ 
+ if ($v =~ /4.0.(.*)/ or $v =~ /4.1.2/){
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 4.0.x - 4.1.2 (search.php, cat param) - SQL Injection Exploit\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34526/\n\n";
+ }
    
  if ($v =~ /4.(.*)/ or $v =~ /5.(.*)/){ $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 4.x/5.x multiple Full Puth Disclosure Vulnerability\n";
