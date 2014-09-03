@@ -1,6 +1,7 @@
 package bin::modx;
 use Exporter qw(import);
 our @EXPORT_OK = qw(vmod);
+use Term::ANSIColor qw(:constants);
 use LWP::UserAgent;
 
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -25,92 +26,92 @@ $c = LWP::UserAgent->new(agent => $A[$NA]);#                                   \
 $c->timeout(30);#                                                               +------------+
 $c->env_proxy;#                                                                               \
 $source = $c->get($ARGV[0])->content;#                                                         \
-#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-if($source eq ""){ print "\n[~] Website offline, try again!\n"; exit(); }#                      |
-if($source =~ /400 URL must be absolute/){ print "\n[~] Error 404!\n\n"; exit(); }#             |
-#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+#-----------------------------------------------------------------------------------------------+
+if($source eq ""){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Website offline, try again!\n"; exit(); }#                      |
+if($source =~ /400 URL must be absolute/){ print "\n[", BOLD RED,"~", BOLD WHITE,"] ", BOLD RED,"Error 404!", BOLD WHITE,"\n\n"; exit(); }#             |
+#-----------------------------------------------------------------------------------------------+
 $expN = 0;
-if (length($source) > 0){ }else{ print "\n[~] Error!\n"; exit(); }
+if (length($source) > 0){ }else{ print "\n[", BOLD RED,"~", BOLD WHITE,"]Error!\n"; exit(); }
 
-print "Version not found! Want to enter manually?[y/n]: ";
+print BOLD WHITE,"Version not found! Want to enter manually?[y/n]: ";
 $ynver=<STDIN>; chomp $ynver;
 if (lc($ynver) eq "n"){ print "\n"; }
 if (lc($ynver) eq "y"){
- print "Version: ";
+ print BOLD WHITE,"Version: ";
  $v=<STDIN>; chomp $v;
 
   if ($v =~ /2.2.0/){ $expN = $expN + 2;
-  print "+-[|] ModX 2.2.0 - Multiple Vulnerabilities\n";
-  print "+--[-] http://www.exploit-db.com/exploits/18593/\n|\n";  
-  print "+-[|] Modx 2.2.0 Local File Inclusion / Path Disclosure\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2012030108\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] ModX 2.2.0 - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/18593/\n",BOLD GREEN,"|\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Modx 2.2.0 Local File Inclusion / Path Disclosure\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2012030108\n\n";
   }
 
   if ($v =~ /2.0.4-pl2/){ $expN = $expN + 1;
-  print "+-[|] MODx Revolution CMS 2.0.4-pl2 Remote XSS POST Injection Vulnerability\n";
-  print "+--[-] http://www.exploit-db.com/exploits/15701/\n";
-  print "+--[-] http://www.1337day.com/exploit/15076\n\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx Revolution CMS 2.0.4-pl2 Remote XSS POST Injection Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/15701/\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/15076\n\n";  
   }
 
   if ($v =~ /1.0.3/){ $expN = $expN + 1;
-  print "+-[|] MODx 1.0.3 'index.php' Multiple SQL Injection Vulnerabilities\n";
-  print "+--[-] http://www.exploit-db.com/exploits/34142/\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2010060082\n\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx 1.0.3 'index.php' Multiple SQL Injection Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34142/\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2010060082\n\n";  
   }
 
   if ($v =~ /0.9.6.2/){ $expN = $expN + 1;
-  print "+-[|] modx cms <= 0.9.6.2 (rfi/xss) Multiple Vulnerabilities\n";
-  print "+--[-] http://www.exploit-db.com/exploits/7204/\n";
-  print "+--[-] http://www.1337day.com/exploit/4236\n\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] modx cms <= 0.9.6.2 (rfi/xss) Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/7204/\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/4236\n\n";  
   }
 
   if ($v =~ /0.9.6/){ $expN = $expN + 2;
-  print "+-[|] MODx 0.9.6 index.php Multiple Parameter XSS\n";
-  print "+--[-] http://www.exploit-db.com/exploits/31120/\n|\n";  
-  print "+-[|] SQL Injection - modx-0.9.6\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2007100036\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx 0.9.6 index.php Multiple Parameter XSS\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/31120/\n",BOLD GREEN,"|\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] SQL Injection - modx-0.9.6\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2007100036\n\n";
   }
 
   if ($v =~ /0.9.6.1/){ $expN = $expN + 4;
-  print "+-[|] modx cms 0.9.6.1 - Multiple Vulnerabilities\n";
-  print "+--[-] http://www.exploit-db.com/exploits/4843/\n";
-  print "+--[-] http://www.1337day.com/exploit/2448\n|\n";
-  print "+-[|] MODx 0.9.6.1 'AjaxSearch.php' Local File Include Vulnerability\n";
-  print "+--[-] http://www.exploit-db.com/exploits/30969/\n|\n";
-  print "+-[|] MODx 0.9.6.1 'htcmime.php' Source Code Information Disclosure Vulnerability\n";
-  print "+--[-] http://www.exploit-db.com/exploits/30968/\n|\n";
-  print "+-[|] MODx CMS Source code disclosure, local file inclusion\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2008010021\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] modx cms 0.9.6.1 - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/4843/\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/2448\n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx 0.9.6.1 'AjaxSearch.php' Local File Include Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/30969/\n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx 0.9.6.1 'htcmime.php' Source Code Information Disclosure Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/30968/\n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx CMS Source code disclosure, local file inclusion\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2008010021\n\n";
   }
 
   if ($v =~ /0.9.2.1/){ $expN = $expN + 1;
-  print "+-[|] MODx CMS <= 0.9.2.1 (FCKeditor) Remote File Include Vulnerability\n";
-  print "+--[-] http://www.exploit-db.com/exploits/2706/\n";
-  print "+--[-] http://www.1337day.com/exploit/1106\n\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx CMS <= 0.9.2.1 (FCKeditor) Remote File Include Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/2706/\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/1106\n\n";  
   }
 
   if ($v =~ /0.9.1/){ $expN = $expN + 2;
-  print "+-[|] MODxCMS 0.9.1 Index.PHP Cross-Site Scripting Vulnerability\n";
-  print "+--[-] http://www.exploit-db.com/exploits/27648/\n|\n";  
-  print "+-[|] MODxCMS 0.9.1 Index.PHP Directory Traversal Vulnerability\n";
-  print "+--[-] http://www.exploit-db.com/exploits/27649/\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODxCMS 0.9.1 Index.PHP Cross-Site Scripting Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/27648/\n",BOLD GREEN,"|\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODxCMS 0.9.1 Index.PHP Directory Traversal Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/27649/\n\n";
   }
 
   if ($v =~ /1.0.6/){ $expN = $expN + 2;
-  print "+-[|] MODx 1.0.6 Brute Force & Path Disclosure\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2012110148\n|\n";  
-  print "+-[|] MODx CSRF, AoF, DoS and IAA vulnerabilities\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2012110224\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx 1.0.6 Brute Force & Path Disclosure\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2012110148\n",BOLD GREEN,"|\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx CSRF, AoF, DoS and IAA vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2012110224\n\n";
   }
 
   if ($v =~ /0.9.6.1/ or $v =~ /0.9.6.1p1/){ $expN = $expN + 1;
-  print "+-[|] Modx 0.9.6.1, 0.9.6.1p1 Multiple Security Vulnerabilities\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2009090195\n\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Modx 0.9.6.1, 0.9.6.1p1 Multiple Security Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2009090195\n\n";  
   }
 
   if ($v =~ /2.2.10/){ $expN = $expN + 1;
-  print "+-[|] MODx 2.2.10 Reflected Cross Site Scripting\n";
-  print "+--[-] http://cxsecurity.com/issue/WLB-2013100154\n\n";  
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx 2.2.10 Reflected Cross Site Scripting\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2013100154\n\n";  
   }
   
 }else{
@@ -118,18 +119,18 @@ if (lc($ynver) eq "y"){
 print "Version dont found! Showing all registered exploits...\n";
  
    $expN = $expN + 1;
- print "+-[|] MODx (Evogallery) File Upload Vulnerability\n";
- print "+--[-] http://www.1337day.com/exploit/21918\n";
- print "+--[-] http://cxsecurity.com/issue/WLB-2014020151\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx (Evogallery) File Upload Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/21918\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014020151\n\n";
 
    $expN = $expN + 1;
- print "+-[|] MODx Blind SQL Injection Vulnerability\n";
- print "+--[-] http://www.1337day.com/exploit/22168\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MODx Blind SQL Injection Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22168\n\n";
 
 }
 
- if ($expN==0){ print "\n[~] Exploits not found :'( \n"; exit(); }
-print "-------------------------------------------------------------------------------\nEnd...\nPossible exploits found: ".$expN."\n-------------------------------------------------------------------------------\n";
+ if ($expN==0){ print "\n[", BOLD RED,"~", BOLD WHITE,"] Exploits not found :'( \n"; exit(); }
+print BOLD WHITE,"-------------------------------------------------------------------------------\nEnd...\nPossible exploits found: ",BOLD MAGENTA $expN."",BOLD WHITE,"\n-------------------------------------------------------------------------------\n";
 
 exit();
 }
