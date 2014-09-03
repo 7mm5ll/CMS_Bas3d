@@ -1,6 +1,7 @@
 package bin::vcms;
 use Exporter qw(import);
 our @EXPORT_OK = qw(vcms);
+use Term::ANSIColor qw(:constants);
 use LWP::UserAgent;
 
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -8,8 +9,8 @@ use LWP::UserAgent;
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 sub vcms {
-sub yes { print " [-] Available to scan? : Yes\n"; }
-sub not { print " [-] Available to scan? : Not\n"; }
+sub yes { print BOLD WHITE," [",BOLD GREEN,"-",BOLD WHITE,"] Available to scan? : Yes\n"; }
+sub not { print BOLD WHITE," [",BOLD GREEN,"-",BOLD WHITE,"] Available to scan? : Not\n"; }
 #-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                
 $NA    = int(rand(12));#                                                      ______           /
 $A[0]  = 'Mozilla/4.0 (compatible; MSIE 5.0; Windows ME) Opera 5.11 [en]';#   \    0\         /
@@ -27,210 +28,210 @@ $c = LWP::UserAgent->new(agent => $A[$NA]);#                                   \
 $c->timeout(30);#                                                               +------------+
 $c->env_proxy;#                                                                               \
 $source = $c->get($ARGV[1])->content;#                                                         \
-#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-if($source eq ""){ print "\n[~] Website offline, try again!\n"; exit(); }#                      |
-if($source =~ /400 URL must be absolute/){ print "\n[~] Error 404!\n\n"; exit(); }#             |
-#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+#-----------------------------------------------------------------------------------------------+
+if($source eq ""){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Website offline, try again!\n"; exit(); }#                      |
+if($source =~ /400 URL must be absolute/){ print "\n[", BOLD RED,"~", BOLD WHITE,"] ", BOLD RED,"Error 404!", BOLD WHITE,"\n\n"; exit(); }#             |
+#-----------------------------------------------------------------------------------------------+
 
-if (length($source) > 0){ }else{ print "\n[~] Error!\n"; exit(); }
+if (length($source) > 0){ }else{ print "\n[", BOLD RED,"~", BOLD WHITE,"] Error!\n"; exit(); }
 
 if ($source =~ /<meta name="generator" content="Plone - (.*)\/>/){
-print "[|] Plone CMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Plone CMS identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/www.adaptcms.com">AdaptCMS (.*)<\/a>/){
-print "[|] Adapt "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] Adapt "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<META NAME="GENERATOR" CONTENT="PHP-Nuke(.*)">/){
-print "[|] PHP-Nuke "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] PHP-Nuke "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="PostNuke (.*) - http:\/\/postnuke.com">/){
-print "[|] PostNuke "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] PostNuke "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="b2evolution (.*)" \/>/){
-print "[|] b2evolution "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] b2evolution "; if ($1 > 0){ print "v".$1." "; } print "CMS identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<a href="\/about.php">About ATutor<\/a>/){
-print "[|] ATutor CMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] ATutor CMS identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /Powered By <a href="http:\/\/www.mybboard.net" target="_blank">MyBB<\/a>/){
-print "[|] CMS MyBB identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS MyBB identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="Joomla!(.*)/){
-print "[|] CMS Joomla confirmed!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Joomla confirmed!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="WordPress (.*)" \/>/ or $source =~ /<a href="http:\/\/wordpress.org\/">(.*) WordPress<\/a>/){
-print "[|] CMS Wordpress confirmed !\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Wordpress confirmed !\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="WordPress.com">/){
-print "[|] CMS Wordpress identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Wordpress identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="XOOPS" \/>/){
-print "[|] CMS XOOPS confirmed !\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS XOOPS confirmed !\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<a href="http:\/\/www.simplemachines.org\/" title="Simple Machines Forum" target="_blank">Powered by SMF (.*)<\/a>/ or 
     $source =~ /<a href="http:\/\/www.simplemachines.org\/about\/copyright.php" title="Free Forum Software" target="_blank">SMF (.*)<\/a>/){
-print "[|] CMS SMF "; if ($1 > 0){ print "v".$1." "; } print "confirmed!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS SMF "; if ($1 > 0){ print "v".$1." "; } print "confirmed!\n";
 &yes;
 exit();
 } 
 
 if ($source =~ /(.*)smf_(.*)/){
-print "[|] CMS SMF confimed!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS SMF confimed!\n";
 &yes;
 exit();
 }
  
 if ($source =~ /Powered by <a href="http:\/\/www.vbulletin.com" id="vbulletinlink">vBulletin&trade;<\/a> Version (.*) <br \/>/ or 
     $source =~ /<meta name="generator" content="vBulletin (.*)" \/>/){ 
-print "[|] CMS vBulletin"; if ($1 > 0){ print "v".$1." "; } print "confimed!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS vBulletin"; if ($1 > 0){ print "v".$1." "; } print "confimed!\n";
 &yes;
 exit();
 } 
 
 if ($source =~ /powered by vBulletin/){ 
-print "[|] CMS vBulletin confimed!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS vBulletin confimed!\n";
 exit();
 }
 
 if ($source =~ /(.*)Powered by <a href="http:\/\/www.phpbb.com\/">phpBB<\/a>(.*)/){
-print "[|] CMS phpBB confimed!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS phpBB confimed!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /name="Generator" content="Drupal (.*) (.*)"/){
-print "[|] CMS Drupal "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Drupal "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /Drupal.settings/){
-print "[|] CMS Drupal identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Drupal identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<a href="http:\/\/www.modx.com" target="_blank"> Powered by MODx<\/a>/){
-print "[|] CMS MODx identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS MODx identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="SilverStripe - http:\/\/silverstripe.org" \/>/){
-print "[|] CMS SilverStripe identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS SilverStripe identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/www.textpattern.com" title="Textpattern">Textpattern<\/a>/){
-print "[|] CMS Textpattern identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Textpattern identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /Powered by (.*)Frog/){
-print "[|] CMS Frog identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Frog identified!\n";
 &yes;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/roller.apache.org">Apache Roller<\/a>/){
-print "[|] CMS Apache Roller identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Apache Roller identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by openCMS v(.*)/){
-print "[|] openCMS"; if ($1 > 0){ print "v".$1."\n"; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] openCMS"; if ($1 > 0){ print "v".$1."\n"; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<img src=(.*) width=(.*) alt="Powered By openCMS"><\/a>/){
-print "[|] openCMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] openCMS identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a (.*) href="http:\/\/www.ametys.org\/">Ametys<\/a>/){
-print "[|] CMS Ametys identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Ametys identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<p>Powered by eXo Platform (.*)<\/p>/){
-print "[|] CMS eXo Platform"; if ($1 > 0){ print "v".$1."\n"; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS eXo Platform"; if ($1 > 0){ print "v".$1."\n"; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by eXo Platform (.*)/){
-print "[|] CMS eXo Platform identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS eXo Platform identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Copyright &copy; 2013 eXo Platform SAS, All rights reserved/ or 
     $source =~ /Powered by eXo Platform/){
-print "[|] CMS eXo Platform identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS eXo Platform identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="Generator" content="DSpace (.*)" \/>/){
-print "[|] CMS DSpace "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS DSpace "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="Generator" content="DSpace" \/>/ or 
     $source =~ /<a (.*)href="http:\/\/www.dspace.org\/">DSpace Software<\/a>/){
-print "[|] CMS DSpace identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS DSpace identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by DSpace software, Version (.*)/){
-print "[|] CMS DSpace "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS DSpace "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="(.*)">DotCMS<\/a>/){
-print "[|] DotCMS identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] DotCMS identified!\n";
 &not;
 exit();
 }
@@ -238,7 +239,7 @@ exit();
 if ($source =~ /<meta name="Generator" content="Composite C1 CMS - Free Open Source from http:\/\/composite.net\/" \/>/ or 
     $source =~ /<a href="http:\/\/www.composite.net\/">Powered by Composite C1, Free Open Source .NET CMS<\/a>/ or 
     $source =~ /<meta content="Composite C1 CMS - Free Open Source from http:\/\/composite.net\/" name="Generator" \/>/){
-print "[|] CMS Composite C1 identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Composite C1 identified!\n";
 &not;
 exit();
 }
@@ -247,39 +248,39 @@ if ($source =~ /<font size=(.*)>Powered by DotNetNuke &reg;<\/font>/ or
     $source =~ /<img alt="DotNetNuke Powered!" border=(.*) src=(.*) \/>/ or 
     $source =~ /<a href=(.*)>Powered by DotNetNuke<\/a>/ or 
     $source =~ /<a (.*)href="http:\/\/www.dotnetnuke.com"(.*)>Powered by DotNetNuke<\/a>/){
-print "[|] CMS DotNetNuke identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS DotNetNuke identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<a href=(.*) >Powered by mojoPortal<\/a>/){
-print "[|] CMS mojoPortal identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS mojoPortal identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="phpVibe (.*) ." \/>/ or 
     $source =~ /Powered by <a (.*)href="http:\/\/www.phprevolution.com\/">  phpVibe v(.*)<\/a>/){
-print "[|] CMS phpVibe "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS phpVibe "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="PHPVibe" \/>/ or
     $source =~ /Powered by <a (.*) href="http:\/\/www.phpvibe.com" (.*)>phpVibe&trade;<\/a>/){
-print "[|] CMS phpVibe identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS phpVibe identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<a(.*) href="http:\/\/umbraco.org" (.*)>Powered by umbraco<\/a>/ or
     $source =~ /Powered by umbraco/){
-print "[|] CMS Umbraco identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Umbraco identified!\n";
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="BEdita (.*)" \/>/){
-print "[|] CMS BEdita "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS BEdita "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
@@ -292,44 +293,44 @@ exit();
 }
 
 if ($source =~ /<meta name="generator" content="Chevereto (.*)" \/>/){
-print "[|] CMS Chevereto "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Chevereto "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/chevereto.com\/"(.*)>Chevereto<\/a></){
-print "[|] CMS Chevereto identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Chevereto identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="CMSimple (.*) - www.cmsimple.org">/){
-print "[|] CMS CMSimple "; if ($1 > 0){ print "v".$1."\n"; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS CMSimple "; if ($1 > 0){ print "v".$1."\n"; } print "identified!\n";
 
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/www.cmsimple.org\/">CMSimple<\/a>/){
-print "[|] CMS CMSimple identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS CMSimple identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="CMSimple_XH (.*) - www.cmsimple-xh.org">/){
-print "[|] CMS CMSimple_XH "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS CMSimple_XH "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/www.cmsimple-xh.org\/">CMSimple_XH<\/a>/){
-print "[|] CMS CMSimple_XH identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS CMSimple_XH identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<meta name="generator" content="concrete5 - (.*)" \/>/){
-print "[|] CMS concrete5 "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS concrete5 "; if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
@@ -338,7 +339,7 @@ if ($source =~ /powered by <a href="http:\/\/concrete5.org">concrete5<\/a>/ or
     $source =~ /Powered by concrete5/ or 
     $source =~ /<a href="http:\/\/www.concrete5.org" (.*)>concrete5 - open source CMS<\/a>/ or
     $source =~ /Powered by <a href="http:\/\/www.concrete5.org" (.*)>concrete5 CMS<\/a>/){
-print "[|] CMS concrete5 identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS concrete5 identified!\n";
 &not;
 exit();
 }
@@ -346,13 +347,13 @@ exit();
 if ($source =~ /<a href="http:\/\/www.cotonti.com">Powered by Cotonti<\/a>/ or 
     $source =~ /<meta name="generator" content="Cotonti http:\/\/www.cotonti.com" \/>/ or 
     $source =~ /<a href="http:\/\/www.cotonti.com"(.*)>POWERED BY COTONTI<\/a>/){
-print "[|] CMS Cotonti identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Cotonti identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/getdirectus.com">Directus (v(.*))<\/a>/){
-print "[|] CMS Directus ";if ($1 > 0){ print "v".$1." "; } print "identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Directus ";if ($1 > 0){ print "v".$1." "; } print "identified!\n";
 &not;
 exit();
 }
@@ -362,35 +363,35 @@ if ($source =~ /<meta name="generator" content="DokuWiki Release 2009-12-25c &qu
     $source =~ /<meta name="generator" content="DokuWiki Release (.*)" \/>/ or 
     $source =~ /Powered by: <a href="http:\/\/www.dokuwiki.org\/" (.*)>DokuWiki<\/a>/ or 
     $source =~ /Powered(.*)by Dokuwiki/){
-print "[|] CMS DokuWiki identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS DokuWiki identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by <a href="http:\/\/dotclear.org\/">Dotclear<\/a>/){
-print "[|] CMS Dotclear identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Dotclear identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered by(.*)<a href="http:\/\/www.geeklog.net\/" (.*)>Geeklog<\/a>/){
-print "[|] CMS Geeklog identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Geeklog identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /Powered By Magento/){
-print "[|] CMS Magento identified!\n";
+print BOLD WHITE,"[", BOLD GREEN,"|", BOLD WHITE,"] CMS Magento identified!\n";
 &not;
 exit();
 }
 
 if ($source =~ /<a href="http:\/\/www.cloudflare.com\/" target="_blank" style="(.*)">DDoS protection by CloudFlare<\/a>/){
-print "[~] CloudFlare detected!\n";
+print BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] CloudFlare detected!\n";
 exit();
 }
 
-print "\n[~] CMS unidentified!\n";
+print BOLD WHITE,"\n[", BOLD RED,"~", BOLD WHITE,"] CMS unidentified!\n";
 
 exit();
 }
