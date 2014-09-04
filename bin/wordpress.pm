@@ -1414,7 +1414,7 @@ if (lc($ynver) eq "y"){
  
  if ($source =~ /(.*)\/plugins\/myflash\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress plugin myflash <= 1.00 (wppath) RFI Vulnerability\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," www.exploit-db.com/exploits/3828/\n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/3828/\n\n";
  }  
  
  if ($source =~ /(.*)\/plugins\/enigma2\/(.*)/){ $expN = $expN + 1;
