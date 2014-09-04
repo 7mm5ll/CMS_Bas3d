@@ -31,7 +31,7 @@ if($source eq ""){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Websi
 if($source =~ /400 URL must be absolute/){ print "\n[", BOLD RED,"~", BOLD WHITE,"] ", BOLD RED,"Error 404!", BOLD WHITE,"\n\n"; exit(); }#             |
 #-----------------------------------------------------------------------------------------------+
 $expN = 0;
-if (length($source) > 0){ }else{ print "\n[", BOLD RED,"~", BOLD WHITE,"] Error!\n"; exit(); }
+if (length($source) > 0){ }else{ print "\n[", BOLD RED,"~", BOLD WHITE,"] Error!\n"; exit(); 
 
 if ($source =~ /<meta name="generator" content="WordPress (.*)" \/>/){ $v = $1; 
 }else{ 
@@ -397,7 +397,7 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/29667/\n\n";
  }
  
- if ($source =~ /(.*)\/hemes\/dimension\/(.*)/){ $expN = $expN + 1;
+ if ($source =~ /(.*)\/themes\/dimension\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Dimension Theme - CSRF Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/29668/\n\n";
  }  
@@ -514,8 +514,8 @@ if (lc($ynver) eq "y"){
  if ($source =~ /(.*)\/plugins\/comment-rating\/(.*)/){ $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress Comment Rating Plugin 2.9.32 - Multiple Vulnerabilities\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/24552/\n",BOLD GREEN,"|\n";
- print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] http://www.exploit-db.com/exploits/16221/\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," Comment Rating 2.9.23 Wordpress Plugin Multiple Vulnerabilities\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Comment Rating 2.9.23 Wordpress Plugin Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/16221/\n\n";
  }
  
  if ($source =~ /(.*)\/plugins\/solvemedia\/(.*)/){ $expN = $expN + 1;
