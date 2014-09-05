@@ -252,7 +252,7 @@ if (lc($ynver) eq "y"){
  if ($source =~ /(.*)?option=com_virtuemart&(.*)/){  $expN = $expN + 3;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla! VirtueMart Component 2.0.22a - SQL Injection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/27879/\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/21159n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/21159\n\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2013080187\n",BOLD GREEN,"|\n";
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla 1.5 com_virtuemart <= 1.1.7 - Blind time-based SQL Injection (MSF)\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/17579/\n",BOLD GREEN,"|\n";
