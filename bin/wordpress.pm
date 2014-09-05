@@ -1156,8 +1156,8 @@ if (lc($ynver) eq "y"){
  }  
  
  if ($source =~ /(.*)\/plugins\/wp-symposium\/(.*)/){ $expN = $expN + 1;
- print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] http://www.exploit-db.com/exploits/17679/\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," Wordpress Plugin Symposium <= 0.64 - SQL Injection Vulnerability\n\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Plugin Symposium <= 0.64 - SQL Injection Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/17679/\n\n";
  }  
  
  if ($source =~ /(.*)\/plugins\/contus-hd-flv-player\/(.*)/){ $expN = $expN + 1;
