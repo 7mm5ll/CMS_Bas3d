@@ -31,7 +31,7 @@ if($source eq ""){ print "\n", BOLD WHITE,"[", BOLD RED,"~", BOLD WHITE,"] Websi
 if($source =~ /400 URL must be absolute/){ print "\n[", BOLD RED,"~", BOLD WHITE,"] ", BOLD RED,"Error 404!", BOLD WHITE,"\n\n"; exit(); }#             |
 #-----------------------------------------------------------------------------------------------+
 $expN = 0;
-if (length($source) > 0){ }else{ print "\n[", BOLD RED,"~", BOLD WHITE,"] Error!\n"; exit(); 
+if (length($source) > 0){ }else{ print "\n[", BOLD RED,"~", BOLD WHITE,"] Error!\n"; exit(); }
 
 if ($source =~ /<meta name="generator" content="WordPress (.*)" \/>/){ $v = $1; 
 }else{ 
