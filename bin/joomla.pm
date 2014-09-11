@@ -579,6 +579,11 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/17288/\n\n";
  }
   
+ if ($source =~ /(.*)?option=com_spidercalendar(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] \n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34571/\n\n";
+ }
+  
  if ($source =~ /(.*)?option=com_versioning(.*)/){ $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Component com_versioning SQLi Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/17264/\n",BOLD GREEN,"|\n";
