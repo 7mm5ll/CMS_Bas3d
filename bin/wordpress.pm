@@ -291,6 +291,16 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22362\n\n";
  }
  
+ if ($source =~ /(.*)\/plugins\/like-dislike-counter-for-posts-pages-and-comments\/(.*)/){
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Like Dislike Counter 1.2.3 Plugin - SQL Injection Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34553/\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/plugins\/premium_gallery_manager\/(.*)/){
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Plugins Premium Gallery Manager Unauthenticated Configuration Access Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34538/\n\n";
+ }
+
  if ($source =~ /(.*)\/plugins\/gallery-images\/(.*)/){
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Huge-IT Image Gallery 1.0.1 Authenticated SQL Injection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34524/\n\n";
@@ -298,9 +308,10 @@ if (lc($ynver) eq "y"){
  
   if ($source =~ /(.*)\/themes\/acento\/(.*)/){
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress acento theme Arbitrary File Download Vulnerability\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22574\n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22574\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34578/\n\n";
  } 
- 
+
  if ($source =~ /(.*)\/themes\/NativeChurch\/(.*)/){
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress NativeChurch theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22573\n\n";
