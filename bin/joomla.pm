@@ -198,6 +198,11 @@ if (lc($ynver) eq "y"){
  }
  
  #COMPONENTES --------------------------------------------------------------------------
+ if ($source =~ /(.*)?option=com_formmaker(.*)/){  $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Form Maker <= 4.3 SQLInjection\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090065\n\n";
+ }
+ 
  if ($source =~ /(.*)component\/spidervideoplayer(.*)/){  $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider 2.8.3 SQL Injection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014080123\n\n";
@@ -301,9 +306,10 @@ if (lc($ynver) eq "y"){
  
  if ($source =~ /(.*)?option=com_spidercalendar(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Calendar (index.php, date param) Blind SQL Injection Vulnerability\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/23782/\n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/23782/\n|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Calendar <= 3.2.6 SQL Injection\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090042\n\n";
  }
- 
  
  if ($source =~ /(.*)?option=com_jooproperty(.*)/){ $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla JooProperty 1.13.0 - Multiple Vulnerabilities\n";
