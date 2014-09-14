@@ -306,7 +306,7 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090043\n\n";
  }
  
- if ($source =~ /(.*)\/themes\/trinity/(.*)/){$expN = $expN + 1;
+ if ($source =~ /(.*)\/themes\/trinity\/(.*)/){$expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Trinity theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090052\n\n";
  }
