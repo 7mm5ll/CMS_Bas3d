@@ -291,38 +291,58 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22362\n\n";
  }
  
- if ($source =~ /(.*)\/plugins\/like-dislike-counter-for-posts-pages-and-comments\/(.*)/){
+ if ($source =~ /(.*)\/themes\/epic\/(.*)/){$expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress epic theme Arbitrary File Download Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090036\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/themes\/authentic\/(.*)/){$expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Authentic Theme Arbitrary File Download Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090037\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/themes\/antioch\/(.*)/){$expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Antioch Theme Arbitrary File Download Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090043\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/themes\/trinity/(.*)/){$expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Trinity theme Arbitrary File Download Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090052\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/plugins\/like-dislike-counter-for-posts-pages-and-comments\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Like Dislike Counter 1.2.3 Plugin - SQL Injection Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34553/\n\n";
  }
  
- if ($source =~ /(.*)\/plugins\/premium_gallery_manager\/(.*)/){
+ if ($source =~ /(.*)\/plugins\/premium_gallery_manager\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Plugins Premium Gallery Manager Unauthenticated Configuration Access Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34538/\n\n";
  }
 
- if ($source =~ /(.*)\/plugins\/gallery-images\/(.*)/){
+ if ($source =~ /(.*)\/plugins\/gallery-images\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Huge-IT Image Gallery 1.0.1 Authenticated SQL Injection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34524/\n\n";
  } 
  
-  if ($source =~ /(.*)\/themes\/acento\/(.*)/){
+  if ($source =~ /(.*)\/themes\/acento\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress acento theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22574\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34578/\n\n";
  } 
 
- if ($source =~ /(.*)\/themes\/NativeChurch\/(.*)/){
+ if ($source =~ /(.*)\/themes\/NativeChurch\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress NativeChurch theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22573\n\n";
  }
  
- if ($source =~ /(.*)\/themes\/lote27\/(.*)/){
+ if ($source =~ /(.*)\/themes\/lote27\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress lote27 theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22572\n\n";
  }
  
- if ($source =~ /(.*)\/themes\/FR0_theme\/(.*)/){
+ if ($source =~ /(.*)\/themes\/FR0_theme\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress FR0_theme theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22571\n\n";
  }
@@ -334,7 +354,7 @@ if (lc($ynver) eq "y"){
      $source =~ /(.*)\/themes\/medicate\/(.*)/ or 
      $source =~ /(.*)\/themes\/Centum\/(.*)/ or 
      $source =~ /(.*)\/themes\/Avada\/(.*)/ or 
-     $source =~ /(.*)\/themes\/striking_r\/(.*)/){
+     $source =~ /(.*)\/themes\/striking_r\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress CuckooTap Theme & eShop Arbitrary File Download\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22567\n\n";
  }
