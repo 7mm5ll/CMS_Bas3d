@@ -198,29 +198,21 @@ if (lc($ynver) eq "y"){
  }
  
  #COMPONENTES --------------------------------------------------------------------------
- if ($source =~ /(.*)?option=com_formmaker(.*)/){  $expN = $expN + 1;
+ if ($source =~ /(.*)?option=com_formmaker(.*)/){  $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Form Maker <= 4.3 SQLInjection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090065\n",BOLD GREEN,"|\n";
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Form Maker <= 3.4 - SQLInjection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"] http://www.exploit-db.com/exploits/34637/\n\n";
  }
  
- 
- if ($source =~ /(.*)?option=com_macgallery(.*)/){  $expN = $expN + 1;
+ if ($source =~ /(.*)?option=com_macgallery(.*)/){  $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Mac Gallery <= 1.5 Arbitrary File Download\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34755/\n\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"] http://cxsecurity.com/issue/WLB-2014090109",BOLD YELLOW," \n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"] http://cxsecurity.com/issue/WLB-2014090109\n",BOLD GREEN,"|\n";
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Mac Gallery 1.5 - Arbitrary File Download\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34755/\n\n";
  }
- 
- if ($source =~ /(.*)(.*)/){  $expN = $expN + 1;
- print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] \n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," \n\n";
- }
- 
- 
- 
+
  if ($source =~ /(.*)component\/spidervideoplayer(.*)/){  $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider 2.8.3 SQL Injection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014080123\n\n";
