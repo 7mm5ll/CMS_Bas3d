@@ -291,6 +291,11 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22362\n\n";
  }
  
+ if ($source =~ /(.*)\/plugins\/login-sidebar-widget\/(.*)/){$expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Login Widget With Shortcode 3.1.1 - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34762/\n\n";
+ }
+ 
  if ($source =~ /(.*)\/themes\/epic\/(.*)/){$expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress epic theme Arbitrary File Download Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014090036\n\n";
