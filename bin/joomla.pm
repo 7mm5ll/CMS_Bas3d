@@ -205,12 +205,10 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"] http://www.exploit-db.com/exploits/34637/\n\n";
  }
  
- if ($source =~ /(.*)?option=com_macgallery(.*)/){  $expN = $expN + 2;
+ if ($source =~ /(.*)?option=com_macgallery(.*)/){  $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Mac Gallery <= 1.5 Arbitrary File Download\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34755/\n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34755/\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"] http://cxsecurity.com/issue/WLB-2014090109\n",BOLD GREEN,"|\n";
- print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Mac Gallery 1.5 - Arbitrary File Download\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34755/\n\n";
  }
 
  if ($source =~ /(.*)component\/spidervideoplayer(.*)/){  $expN = $expN + 1;
@@ -235,7 +233,7 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014030120\n\n";
  }
  
- if ($source =~ /(.*)?mode=getshouts&jal_lastID=(.*)/){ $expN = $expN + 2;
+ if ($source =~ /(.*)?mode=getshouts&jal_lastID=(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla AJAX Shoutbox remote SQL Injection vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/32331/\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22032\n\n";
@@ -314,7 +312,7 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/4307/\n\n";
  }
  
- if ($source =~ /(.*)?option=com_spidercalendar(.*)/){ $expN = $expN + 1;
+ if ($source =~ /(.*)?option=com_spidercalendar(.*)/){ $expN = $expN + 2;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Calendar (index.php, date param) Blind SQL Injection Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/23782/\n|\n";
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Calendar <= 3.2.6 SQL Injection\n";
