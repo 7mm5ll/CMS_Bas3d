@@ -44,6 +44,11 @@ if (lc($ynver) eq "y"){
 }
 }
 
+ if ($v =~ /MyBB 1.8 Beta 3/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] MyBB 1.8 Beta 3 - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34381/\n\n";
+ }
+
  if ($v =~ /7.(.*)/){ $expN = $expN + 11;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"]  Drupal Webform Template 7.x Access Bypass\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014030101\n",BOLD GREEN,"|\n";
@@ -86,8 +91,6 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/11060/\n",BOLD GREEN,"|\n";
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Drupal 6.15, 5.21 (API function drupal_goto) Open Redirect Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/11190\n\n";
- #Drupal 6.15 Twitter module v 6.x-2.6 clear text Vulnerability
- #http://www.1337day.com/exploit/10939
  }
  
  if ($v =~ /5.21/){ $expN = $expN + 2;
