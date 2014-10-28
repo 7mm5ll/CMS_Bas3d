@@ -70,6 +70,11 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/2646/\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/1061\n\n";
  } 
+ 
+ if ($v =~ /4.5.5/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Textpattern 4.5.5 Cross Site Scripting\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014100004\n\n";
+ }
 
  if ($expN==0){ print "\n[", BOLD RED,"~", BOLD WHITE,"] Exploits not found :'( \n"; exit(); }
 print BOLD WHITE,"-------------------------------------------------------------------------------\nEnd...\nPossible exploits found: ",BOLD MAGENTA $expN."",BOLD WHITE,"\n-------------------------------------------------------------------------------\n";
