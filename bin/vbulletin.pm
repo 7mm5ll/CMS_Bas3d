@@ -307,11 +307,13 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34526/\n\n";
  }
    
- if ($v =~ /4.(.*)/ or $v =~ /5.(.*)/){ $expN = $expN + 2;
+ if ($v =~ /4.(.*)/ or $v =~ /5.(.*)/){ $expN = $expN + 3;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 4.x/5.x multiple Full Puth Disclosure Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/19898\n",BOLD GREEN,"|\n";
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 4.X and 5.X uploader.swf XSS\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014010042\n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014010042\n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 4.x Verify Email Before Registration Plugin - SQL Injection\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34717/\n\n";
  }
  
  if ($v =~ /4.0.1/){ $expN = $expN + 1;
@@ -428,6 +430,11 @@ if (lc($ynver) eq "y"){
  if ($v =~ /5.1/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 5.1 Cross Site Scripting\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014040129\n\n";
+ }
+ 
+ if ($v =~ /5.1.(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] vBulletin 5.1.X - Persistent Cross Site Scripting\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34579/\n\n";
  }
  
  if ($v =~ /5.1.2/){ $expN = $expN + 2;
