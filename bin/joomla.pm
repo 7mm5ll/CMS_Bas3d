@@ -4018,6 +4018,16 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/4003/\n\n";
  }
  
+ if ($source =~ /(.*)?option=com_spidercontacts&(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Spider Contacts 1.3.6 (index.php, contacts_id param) - SQL Injection\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34625/\n\n";
+ }
+ 
+ if ($source =~ /(.*) ?option=com_facegallery&(.*)/){ $expN = $expN + 2;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla Face Gallery 1.0 - Multiple vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34754/\n\n";
+ }
+ 
  if ($source =~ /(.*)?option=com_letterman&(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla! Letterman Subscriber Module 1.2.4 Mod_Lettermansubscribe.PHP Cross-Site Scripting Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/30190/\n\n";
