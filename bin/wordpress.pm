@@ -315,7 +315,7 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34762/\n\n";
  }
  
- if ($source =~ /(.*)\/plugins\/slideshow-gallery\ /(.*)/){ $expN = $expN + 1;
+ if ($source =~ /(.*)\/plugins\/slideshow-gallery\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Slideshow Gallery 1.4.6 - Shell Upload (Python Exploit)\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34681/\n\n";
  }
