@@ -131,7 +131,6 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/30889/\n",BOLD GREEN,"|\n"; 
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress <= 2.3.1 Charset Remote SQL Injection Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/4721/\n\n";
- 
  }
  
  if ($v =~ /2.3/){ $expN = $expN + 1;
@@ -289,6 +288,36 @@ if (lc($ynver) eq "y"){
  if ($v =~ /3.9.1/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress 3.9.1 - CSRF Vulnerability\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22362\n\n";
+ }
+ 
+  if ($source =~ /(.*)\/plugins\/content-audit\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress Content Audit 1.6 Blind SQL Injection\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014100010\n\n";
+ } 
+ 
+ if ($source =~ /(.*)\/plugins\/slideshow-gallery\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress Slideshow Gallery Plugin 1.4.6 - Shell Upload Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34514/\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/plugins\/wp-support-plus-responsive-ticket-system\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress WP Support Plus Responsive Ticket System 2.0 Plugin - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34589/\n\n";
+ }
+  
+ if ($source =~ /(.*)\/plugins\/bulk-delete-users-by-email\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Bulk Delete Users by Email Plugin 1.0 - CSRF\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34572/\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/plugins\/login-sidebar-widget\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Login Widget With Shortcode 3.1.1 - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34762/\n\n";
+ }
+ 
+ if ($source =~ /(.*)\/plugins\/slideshow-gallery\ /(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Wordpress Slideshow Gallery 1.4.6 - Shell Upload (Python Exploit)\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/34681/\n\n";
  }
  
  if ($source =~ /(.*)\/plugins\/login-sidebar-widget\/(.*)/){$expN = $expN + 1;
