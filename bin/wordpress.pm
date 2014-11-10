@@ -290,6 +290,17 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.1337day.com/exploit/22362\n\n";
  }
  
+ if ($source =~ /(.*)\/plugins\/another-wordpress-classifieds-plugin\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Another Wordpress Classifieds Plugin - SQL Injection\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/35204/\n\n";
+ }
+
+ if ($source =~ /(.*)\/plugins\/xcloner-backup-and-restore\/(.*)/){ $expN = $expN + 1;
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] XCloner Wordpress/Joomla! Plugin - Multiple Vulnerabilities\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/35212/\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014110040\n\n";
+ }
+ 
   if ($source =~ /(.*)\/plugins\/content-audit\/(.*)/){ $expN = $expN + 1;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] WordPress Content Audit 1.6 Blind SQL Injection\n";
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://cxsecurity.com/issue/WLB-2014100010\n\n";
