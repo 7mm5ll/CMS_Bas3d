@@ -321,7 +321,7 @@ print BOLD WHITE,"[", BOLD GREEN ,"|", BOLD WHITE ,"]Basic commands:
  Developed By ", BOLD BLUE ,"Marck", BOLD WHITE ,"          [0.0]
   ", BOLD BLUE ,"https://twitter.com/7mm5l", BOLD WHITE ,"   \\_/
  
- Greets: ", BOLD BLUE ,"Rei_Gelado", BOLD WHITE ,"
+ Greats: ", BOLD BLUE ,"Rei_Gelado", BOLD WHITE ,"
          All friends of ", BOLD BLUE ,"caveiratech.com/forum/", BOLD WHITE ,"
 ";
 exit();
