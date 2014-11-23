@@ -2531,9 +2531,13 @@ if (lc($ynver) eq "y"){
  print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/11578/\n\n";
  }
   
- if ($source =~ /(.*)?option=com_hdflvplayer&(.*)/){ $expN = $expN + 1;
+ if ($source =~ /(.*)?option=com_hdflvplayer&(.*)/){ $expN = $expN + 3;
  print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] HD FLV Player Component for Joomla! 'id' Parameter SQL Injection Vulnerability\n";
- print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/33673/\n\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/33673/\n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla HD FLV Player < 2.1.0.1 - SQL Injection Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/35220/\n",BOLD GREEN,"|\n";
+ print BOLD WHITE,"+-[",BOLD GREEN,"|",BOLD WHITE,"] Joomla HD FLV Player < 2.1.0.1 - Arbitrary File Download Vulnerability\n";
+ print BOLD WHITE,"+--[",BOLD GREEN,"-",BOLD WHITE,"]",BOLD YELLOW," http://www.exploit-db.com/exploits/35246/\n\n";
  }
   
  if ($source =~ /(.*)?option=com_ice&(.*)/){ $expN = $expN + 2;
