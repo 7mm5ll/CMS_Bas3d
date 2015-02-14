@@ -1,7 +1,7 @@
 CMS Bas3d
 -
 
-Desenvolvido por Marck ( [**Twitter**](https://twitter.com/7mm5l) / [**CaveiraTech**](http://caveiratech.com/forum/) )
+Desenvolvido por Marck ([**Twitter**](https://twitter.com/7mm5l))
 
  Script que facilitara o encontro de possíveis vulnerabilidades em várias CMS diferentes e a identificação de qual CMS esta rodando no alvo...
  
